@@ -1,5 +1,4 @@
 import re
-
 from rest_framework import serializers
 from rest_framework.serializers import HyperlinkedModelSerializer
 from django.utils.translation import ugettext_lazy as _
