@@ -26,17 +26,19 @@ class App extends React.Component {
 
    render () {
        return (
-           <div>
-               <menu>
-                    <li>Автор</li>
-                    <li>Проект</li>
-                    <li>TODO</li>
-               </menu>
-               <UserList users={this.state.users} />
-               <footer>
-                    <p>Подвал</p>
-               </footer>
-           </div> )
+           <body>
+               <div font-size = "large">
+                   <menu>
+                        <li>Автор</li>
+                        <li>Проект</li>
+                        <li>TODO</li>
+                   </menu>
+                   <UserList users={this.state.users} />
+                   <footer>
+                        <p>Подвал</p>
+                   </footer>
+               </div>
+           </body>)
 
    }
 }
