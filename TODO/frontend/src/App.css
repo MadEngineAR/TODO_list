@@ -41,10 +41,21 @@ html, body {
   width: 100%;
   height: 100%;
   font-size: calc(3px + 2vmin);
-  font-weight: bold;
-  color: blue;
+  font-weight: bolder;
+  color: black;
+  text-align: center;
   background: url("todo.jpeg")  no-repeat center top fixed;
   background-size: cover;
   padding: 0;
   margin: 0;
+}
+
+.table_center_by_css {
+
+width: 300px;
+
+border: 1px solid #000;
+
+margin: auto;
+
 }

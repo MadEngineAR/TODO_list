@@ -18,9 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from authapp.views import UserModelViewSet
+from task_list.views import ProjectModelViewSet, TodoArticleModelViewSet
 
 router = DefaultRouter()
 router.register('authapp', UserModelViewSet)
+router.register('projects', ProjectModelViewSet)
+router.register('todo', TodoArticleModelViewSet)
+
 urlpatterns = [
    path('admin/', admin.site.urls),
    path('api-auth/', include('rest_framework.urls')),

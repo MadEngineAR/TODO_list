@@ -1,27 +1,28 @@
-import React from 'react'
+import React from 'react';
 
 const UserItem = ({user}) => {
    return (
-        <tr>
-            <td>
-               {user.first_name}
-            </td>
-            <td>
-               {user.last_name}
-            </td>
-            <td>
-                {user.username}
-            </td>
-            <td>
-                {user.email}
-            </td>
-        </tr>
+
+            <tr>
+                <td>
+                   {user.first_name}
+                </td>
+                <td>
+                   {user.last_name}
+                </td>
+                <td>
+                    {user.username}
+                </td>
+                <td>
+                    {user.email}
+                </td>
+            </tr>
    )
 }
 
 const UserList = ({users}) => {
     return (
-        <table>
+        <table  class="table_center_by_css">
             <th>
                First name
             </th>

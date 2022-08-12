@@ -10,3 +10,5 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=64)
     email = models.EmailField('email address', unique=True)
 
+    def __str__(self):
+        return self.username

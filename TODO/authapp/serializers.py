@@ -8,7 +8,7 @@ from .models import User
 class UserModelSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('url', 'username', 'first_name', 'last_name', 'email')
 
     def clean_first_name(value):
         if re.search('[a-zA-Z0-9]', value):

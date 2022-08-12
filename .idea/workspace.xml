@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad694c43-1117-4ddd-b054-eb2a24f740fe" name="Changes" comment="lesson_2 Complete homework, fix problem authification User">
+    <list default="true" id="ad694c43-1117-4ddd-b054-eb2a24f740fe" name="Changes" comment="lesson_2 add background, update css">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TODO/task_list/management/commands/create_projects_todoArticles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TODO/task_list/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TODO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TODO.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO/TODO/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/TODO/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO/TODO/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/TODO/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO/authapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/authapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO/authapp/management/commands/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/authapp/management/commands/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO/authapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/authapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO/authapp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/authapp/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO/authapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/authapp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO/frontend/src/components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/frontend/src/components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO/frontend/src/todo.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/TODO/frontend/src/todo.jpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -29,8 +42,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TODO/task_list/management/commands/create_projects_todoArticles.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2CnHzj7F6S9YPwdN4A2hZBm3dM8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,13 +57,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/TODO/frontend/src" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/Users/ruslanmustaev/PycharmProjects/TODO/TODO/task_list",
+    "ts.external.directory.path": "/Applications/PyCharm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/TODO/task_list" />
       <recent name="$PROJECT_DIR$/TODO/frontend/src" />
       <recent name="$PROJECT_DIR$/TODO/authapp" />
     </key>
@@ -62,6 +83,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TODO/manage.py" />
       <option name="PARAMETERS" value="runserver" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -80,6 +102,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1659431693708</updated>
+      <workItem from="1660289061787" duration="226000" />
+      <workItem from="1660289327982" duration="2435000" />
+      <workItem from="1660298321923" duration="258000" />
+      <workItem from="1660298588279" duration="802000" />
+      <workItem from="1660299399448" duration="18903000" />
     </task>
     <task id="LOCAL-00001" summary="craete User, Command users, create Api User">
       <created>1659520056723</created>
@@ -130,8 +157,18 @@
       <option name="project" value="LOCAL" />
       <updated>1659712861132</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="lesson_2 add background, update css">
+      <created>1659772772616</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1659772772616</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -152,21 +189,10 @@
     <MESSAGE value="lesson_1 add migrations" />
     <MESSAGE value="lesson_1 Corect login User, add hash password" />
     <MESSAGE value="lesson_2 Complete homework, fix problem authification User" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson_2 Complete homework, fix problem authification User" />
+    <MESSAGE value="lesson_2 add background, update css" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson_2 add background, update css" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/TODO/authapp/management/commands/users.py</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TODO$manage.coverage" NAME="manage Coverage Results" MODIFIED="1660332932237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TODO" />
   </component>
 </project>
