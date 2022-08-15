@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from authapp.views import UserModelViewSet
-from task_list.views import ProjectModelViewSet, TodoArticleModelViewSet
+from task_list.views import ProjectDjangoFilterPaginationViewSet, TodoArticleFilterPaginationViewSet
 
 router = DefaultRouter()
 router.register('authapp', UserModelViewSet)
-router.register('projects', ProjectModelViewSet)
-router.register('todo', TodoArticleModelViewSet)
+router.register('projects',ProjectDjangoFilterPaginationViewSet)
+router.register('todo', TodoArticleFilterPaginationViewSet)
 
 urlpatterns = [
    path('admin/', admin.site.urls),

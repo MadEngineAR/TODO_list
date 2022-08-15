@@ -3,7 +3,7 @@ from .models import Project, TodoArticle
 
 
 class ProjectModelSerializer(serializers.ModelSerializer):
-    users = serializers.StringRelatedField(many=True)
+    # users = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Project
