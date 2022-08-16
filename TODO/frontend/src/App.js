@@ -18,16 +18,17 @@ class App extends React.Component {
     const users = response.data
         this.setState(
         {
-            'users': users
+            'users': users['results']
         }
     )
     }).catch(error => console.log(error))
+
     }
 
    render () {
        return (
            <body>
-               <div font-size = "large">
+               <div>
                    <menu>
                         <li>Автор</li>
                         <li>Проект</li>
@@ -38,7 +39,8 @@ class App extends React.Component {
                         <p>Подвал</p>
                    </footer>
                </div>
-           </body>)
+           </body>
+       )
 
    }
 }
