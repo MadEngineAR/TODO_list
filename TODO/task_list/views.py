@@ -31,8 +31,9 @@ class ProjectDjangoFilterPaginationViewSet(viewsets.ModelViewSet):
     filterset_class = ProjectFilter
     pagination_class = ProjectLimitOffsetPagination
 
+
 class TodoArticleFilterPaginationViewSet(viewsets.ModelViewSet):
-    renderer_classes = [AdminRenderer]
+    # renderer_classes = [AdminRenderer]
     queryset = TodoArticle.objects.all()
     serializer_class = TodoArticleHyperlinkedModelSerializer
     filterset_class = TodoArticleFilter
