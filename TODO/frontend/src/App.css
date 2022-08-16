@@ -42,7 +42,7 @@ html, body {
   height: 100%;
   font-size: calc(3px + 2vmin);
   font-weight: bolder;
-  color: firebrick;
+  color: orangered;
   text-align: center;
   background: url("todo.jpeg")  no-repeat center top fixed;
   background-size: cover;
