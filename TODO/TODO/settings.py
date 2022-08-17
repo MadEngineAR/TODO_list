@@ -133,7 +133,7 @@ AUTH_USER_MODEL = 'authapp.User'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://192.168.1.109:3000",
+    "http://192.168.0.139:3000 ",
 
 ]
 

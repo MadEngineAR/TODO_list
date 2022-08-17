@@ -4,8 +4,18 @@ import UserList from './components/User.js'
 import ProjectList from './components/Project.js'
 import axios from 'axios'
 import TodoList from "./components/Todo";
+import {Route, BrowserRouter, Link, Routes, Navigate,} from "react-router-dom";
+import ProjectListDetail from "./components/ProjectDetail";
 
+const NotFound404 = () => {
+    return (
+    <div>
+        <h1>Страница по адресу '{window.location.pathname}' не найдена</h1>
+    </div>
+    )
+}
 
+console.log(ProjectListDetail)
 class App extends React.Component {
    constructor(props) {
        super(props);
@@ -46,7 +56,6 @@ class App extends React.Component {
     axios.get('http://127.0.0.1:8000/api/todo/').then(response => {
         let todoArticles;
        todoArticles = response.data;
-        console.log(todoArticles)
 
         this.setState(
         {
@@ -59,53 +68,46 @@ class App extends React.Component {
     });
     }
 
-   render () {
+     render () {
        return (
            <body>
                <div>
-                   <menu>
-                        <li>Автор</li>
-                        <li>Проект</li>
-                        <li>TODO</li>
-                   </menu>
-                   <UserList users={this.state.users} />
-                   <ProjectList projects={this.state.projects} />
-                   <TodoList todoArticles={this.state.todoArticles} />
-                   <footer>
-                        <p>Подвал</p>
-                   </footer>
+                   <BrowserRouter>
+                       <menu>
+                            <li>
+                                <Link to='/'>Users</Link>
+                            </li>
+                            <li>
+                                <Link to='/projects'>Projects</Link>
+                            </li>
+                            <li>
+                                <Link to='/todo'>Todo</Link>
+                            </li>
+                       </menu>
+                       <Routes>
+                           <Route exact path='/' element={<UserList users={this.state.users} />} />
+                           <Route exact path='/projects' element={<ProjectList projects={this.state.projects} />}/>
+                           <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles} />}/>
+                           <Route path="/projects/:name" element={<ProjectListDetail projects={this.state.projects} />}/>
+                           <Route path="/users" element={ <Navigate to="/" /> } />
+                           <Route path="*" element={<NotFound404/>}/>
+                       </Routes>
+                       <footer>
+                            <p>Подвал</p>
+                       </footer>
+                   </BrowserRouter>
                </div>
            </body>
        )
 
    }
+
+
+
+
+
 }
 
 
 
 export default App;
-//import logo from './logo.svg';
-//import './App.css';
-//
-//function App() {
-//  return (
-//    <div className="App">
-//      <header className="App-header">
-//        <img src={logo} className="App-logo" alt="logo" />
-//        <p>
-//          Edit <code>src/App.js</code> and save to reload.
-//        </p>
-//        <a
-//          className="App-link"
-//          href="https://reactjs.org"
-//          target="_blank"
-//          rel="noopener noreferrer"
-//        >
-//          Learn React
-//        </a>
-//      </header>
-//    </div>
-//  );
-//}
-
-//export default App;
