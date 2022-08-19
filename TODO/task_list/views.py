@@ -7,15 +7,10 @@ from .filters import ProjectFilter, TodoArticleFilter
 from .models import Project, TodoArticle
 from rest_framework.pagination import LimitOffsetPagination
 from .serializers import ProjectModelSerializer, TodoArticleHyperlinkedModelSerializer
-
-
-# class ProjectModelViewSet(ModelViewSet):
-#     # renderer_classes = [AdminRenderer]
-#     # renderer_classes = [CamelCaseJSONRenderer]
-#     queryset = Project.objects.all()
-#     serializer_class = ProjectModelSerializer
-#     filterset_class = ProjectFilter
-
+from rest_framework.permissions import BasePermission
+class StaffOnly(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_staff
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
@@ -34,6 +29,7 @@ class ProjectDjangoFilterPaginationViewSet(viewsets.ModelViewSet):
 
 class TodoArticleFilterPaginationViewSet(viewsets.ModelViewSet):
     # renderer_classes = [AdminRenderer]
+    # permission_classes = [StaffOnly]
     queryset = TodoArticle.objects.all()
     serializer_class = TodoArticleHyperlinkedModelSerializer
     filterset_class = TodoArticleFilter
