@@ -10,7 +10,7 @@ from .serializers import ProjectModelSerializer, TodoArticleHyperlinkedModelSeri
 from rest_framework.permissions import BasePermission
 class StaffOnly(BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_staff
+        return request.user.is_superuser
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
@@ -29,7 +29,7 @@ class ProjectDjangoFilterPaginationViewSet(viewsets.ModelViewSet):
 
 class TodoArticleFilterPaginationViewSet(viewsets.ModelViewSet):
     # renderer_classes = [AdminRenderer]
-    # permission_classes = [StaffOnly]
+    permission_classes = [StaffOnly]
     queryset = TodoArticle.objects.all()
     serializer_class = TodoArticleHyperlinkedModelSerializer
     filterset_class = TodoArticleFilter
