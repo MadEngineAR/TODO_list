@@ -1,4 +1,4 @@
-#from djangorestframework_camel_case.render import CamelCaseJSONRenderer
+# from djangorestframework_camel_case.render import CamelCaseJSONRenderer
 from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.renderers import AdminRenderer
@@ -8,6 +8,8 @@ from .models import Project, TodoArticle
 from rest_framework.pagination import LimitOffsetPagination
 from .serializers import ProjectModelSerializer, TodoArticleHyperlinkedModelSerializer
 from rest_framework.permissions import BasePermission
+
+
 class StaffOnly(BasePermission):
     def has_permission(self, request, view):
         return request.user.is_superuser
@@ -19,6 +21,7 @@ class ProjectLimitOffsetPagination(LimitOffsetPagination):
 
 class ArticleLimitOffsetPagination(LimitOffsetPagination):
     default_limit = 20
+
 
 class ProjectDjangoFilterPaginationViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
@@ -35,8 +38,7 @@ class TodoArticleFilterPaginationViewSet(viewsets.ModelViewSet):
     filterset_class = TodoArticleFilter
     pagination_class = ArticleLimitOffsetPagination
 
-    def destroy(self, request,  pk=None, *args, **kwargs):
-
+    def destroy(self, request, pk=None, *args, **kwargs):
         article = get_object_or_404(TodoArticle, pk=pk)
         article.is_active = False
         serializer = TodoArticleHyperlinkedModelSerializer(article, context={'request': request})
