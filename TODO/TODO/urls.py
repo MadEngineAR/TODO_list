@@ -16,30 +16,40 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.authtoken import views
+from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 from authapp.views import UserModelViewSet
+from rest_framework.schemas import get_schema_view
 from task_list.views import ProjectDjangoFilterPaginationViewSet, TodoArticleFilterPaginationViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
-    TokenRefreshView,)
-from rest_framework_jwt.views import obtain_jwt_token
+    TokenRefreshView, )
+
 
 router = DefaultRouter()
 router.register('authapp', UserModelViewSet)
-router.register('projects',ProjectDjangoFilterPaginationViewSet)
+router.register('projects', ProjectDjangoFilterPaginationViewSet)
 router.register('todo', TodoArticleFilterPaginationViewSet)
 
 urlpatterns = [
-   path('admin/', admin.site.urls),
-   path('api-auth/', include('rest_framework.urls')),
-   path('api/', include(router.urls)),
-   # path('api-token-auth/', views.obtain_auth_token),
-   # path('api-token-auth/', obtain_jwt_token),
+    path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include(router.urls)),
+    # path('api-token-auth/', views.obtain_auth_token),
+    # path('api-token-auth/', obtain_jwt_token),
 
-   path('api-token-auth/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-   path('api-token-auth/refresh/', TokenRefreshView.as_view(), name='token_refresh')
-    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api-token-auth/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api-token-auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    path('redoc/', TemplateView.as_view(
+        template_name='redoc.html',
+        extra_context={'schema_url': 'openapi-schema'}
+    ), name='redoc'),
+
+    path('openapi', get_schema_view(
+        title="TODO",
+        description="API for all things …",
+        version="1.0.0"
+    ), name='openapi-schema'),
 
 ]
