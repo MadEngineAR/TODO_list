@@ -9,6 +9,7 @@ import ProjectListDetail from "./components/ProjectDetail";
 import LoginForm from "./components/Auth";
 import Cookies from 'universal-cookie';
 import User from "./components/User.js";
+import project from "./components/Project.js";
 
 const NotFound404 = () => {
     return (
@@ -32,11 +33,23 @@ class App extends React.Component {
         };
     }
 
+    delete_project(id) {
+        const headers = this.get_headers()
+        axios.delete(`http://127.0.0.1:8000/api/books/${id}`, {headers})
+            .then(response => {
+                this.load_data()
+            }).catch(error => {
+                console.log(error)
+                this.setState({projects: []})
+            }
+        )
+    }
+
     set_token(token, username) {
         const cookies = new Cookies()
         cookies.set('token', token)
         cookies.set('username', username)
-        this.setState({'token': token, 'username': username},()=>this.load_data())
+        this.setState({'token': token, 'username': username}, () => this.load_data())
     }
 
     is_authenticated() {
@@ -132,7 +145,7 @@ class App extends React.Component {
         }).catch(error => {
             console.log(error);
             this.setState({
-                    'todoArticles': [],
+                'todoArticles': [],
             });
         });
 
@@ -150,14 +163,15 @@ class App extends React.Component {
             <div>
                 <BrowserRouter>
                     <menu className="text">
-                         {this.is_authenticated() ?
-                                <div className="App">
-                                    <button className="Button"
-                                onClick={() => this.logout()}>Logout</button>
-                                Ну, привет!  {this.state.username}
-                                </div>
-                                :
-                                <Link className="App" to='/login'>Login</Link>}
+                        {this.is_authenticated() ?
+                            <div className="App">
+                                <button className="Button"
+                                        onClick={() => this.logout()}>Logout
+                                </button>
+                                Ну, привет! {this.state.username}
+                            </div>
+                            :
+                            <Link className="App" to='/login'>Login</Link>}
                         <li>
                             <Link to='/'>Users</Link>
                         </li>
@@ -175,11 +189,13 @@ class App extends React.Component {
                             this.is_authenticated() ?
                                 <div></div>
                                 :
-                            <LoginForm
-                            get_token={(username, password) => this.get_token(username, password)}/>
+                                <LoginForm
+                                    get_token={(username, password) => this.get_token(username, password)}/>
                         }/>}/>
                         <Route exact path='/' element={<UserList users={this.state.users}/>}/>
-                        <Route exact path='/projects' element={<ProjectList projects={this.state.projects}/>}/>
+                        <Route exact path='/projects' element={<ProjectList projects={this.state.projects}
+                                                                            delete_project={ (id) =>
+                                                                                this.delete_project(id) } />}/>
                         <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles}/>}/>
                         <Route path="/projects/:name" element={<ProjectListDetail projects={this.state.projects}/>}/>
                         <Route path="/users" element={<Navigate to="/"/>}/>
