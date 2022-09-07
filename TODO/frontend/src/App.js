@@ -10,6 +10,7 @@ import LoginForm from "./components/Auth";
 import Cookies from 'universal-cookie';
 import User from "./components/User.js";
 import project from "./components/Project.js";
+import ProjectForm from "./components/ProjectForm";
 
 const NotFound404 = () => {
     return (
@@ -32,6 +33,21 @@ class App extends React.Component {
 
         };
     }
+
+    create_project(name, resp_link, users) {
+        const headers = this.get_headers()
+        const data = {name: name, resp_link:resp_link ,users: users}
+        axios.post(`http://127.0.0.1:8000/api/projects/`, data, {headers})
+            .then(response => {
+                this.load_data()
+            }).catch(error => {
+            console.log(error)
+            this.setState({
+                projects: []
+            })
+        })
+    }
+
 
     delete_project(id) {
         const headers = this.get_headers()
@@ -194,8 +210,11 @@ class App extends React.Component {
                         }/>}/>
                         <Route exact path='/' element={<UserList users={this.state.users}/>}/>
                         <Route exact path='/projects' element={<ProjectList projects={this.state.projects}
-                                                                            delete_project={ (id) =>
-                                                                                this.delete_project(id) } />}/>
+                                                                            delete_project={(id) =>
+                                                                                this.delete_project(id)}/>}/>
+                        <Route exact path='/projects/create' element={<ProjectForm users={this.state.users}
+                                                                           create_project={(name, resp_link, users) =>
+                                                                                this.create_project(name, resp_link, users)}/>}/>
                         <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles}/>}/>
                         <Route path="/projects/:name" element={<ProjectListDetail projects={this.state.projects}/>}/>
                         <Route path="/users" element={<Navigate to="/"/>}/>
