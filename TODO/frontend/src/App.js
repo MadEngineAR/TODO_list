@@ -11,6 +11,7 @@ import Cookies from 'universal-cookie';
 import User from "./components/User.js";
 import project from "./components/Project.js";
 import ProjectForm from "./components/ProjectForm";
+import ProjectUpdateForm from "./components/ProjectUpdateForm";
 
 const NotFound404 = () => {
     return (
@@ -48,10 +49,25 @@ class App extends React.Component {
         })
     }
 
+    update_project(id, name, resp_link, users) {
+        const headers = this.get_headers()
+        const data = {name: name, resp_link:resp_link ,users: users}
+        console.log(data)
+        axios.put(`http://127.0.0.1:8000/api/projects/${id}`, data, {headers})
+            .then(response => {
+                this.load_data()
+            }).catch(error => {
+            console.log(error)
+            this.setState({
+                projects: []
+            })
+        })
+    }
+
 
     delete_project(id) {
         const headers = this.get_headers()
-        axios.delete(`http://127.0.0.1:8000/api/books/${id}`, {headers})
+        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers})
             .then(response => {
                 this.load_data()
             }).catch(error => {
@@ -90,11 +106,6 @@ class App extends React.Component {
                 username: username,
                 password: password
             },
-            // {
-            //     headers: {
-            //         "Content-type": "application/json"
-            //     }
-            // }
         )
 
 
@@ -214,7 +225,12 @@ class App extends React.Component {
                                                                                 this.delete_project(id)}/>}/>
                         <Route exact path='/projects/create' element={<ProjectForm users={this.state.users}
                                                                            create_project={(name, resp_link, users) =>
-                                                                                this.create_project(name, resp_link, users)}/>}/>
+                                                                                this.create_project(name,
+                                                                                    resp_link, users)}/>}/>
+                        <Route exact path='/projects/:id/update/' element={<ProjectUpdateForm users={this.state.users}
+                                                                           update_project={(id=project.id, name, resp_link, users) =>
+                                                                                this.update_project(id,name,
+                                                                                    resp_link, users)}/>}/>
                         <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles}/>}/>
                         <Route path="/projects/:name" element={<ProjectListDetail projects={this.state.projects}/>}/>
                         <Route path="/users" element={<Navigate to="/"/>}/>

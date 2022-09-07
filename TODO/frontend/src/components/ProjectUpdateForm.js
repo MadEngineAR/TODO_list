@@ -1,11 +1,15 @@
 import React from 'react';
-import ProjectListDetail from "./ProjectDetail";
+import {Navigate, useNavigate} from "react-router-dom";
+import axios from "axios";
+import project from "./Project";
 
 
-class ProjectForm extends React.Component {
+
+class ProjectUpdateForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: 47,
             name: '',
             resp_link: '',
             users: []
@@ -31,8 +35,6 @@ class ProjectForm extends React.Component {
             return;
         }
         let users = [];
-        // event.target.selectedOptions.lenght
-        // event.target.selectedOptions.item(i).value
         for (let i = 0; i < event.target.selectedOptions.length; i++) {
             users.push(event.target.selectedOptions.item(i).value);
         }
@@ -45,7 +47,8 @@ class ProjectForm extends React.Component {
 
 
     handleSubmit(event) {
-        this.props.create_project(this.state.name, this.state.resp_link, this.state.users);
+        console.log(project.id);
+        this.props.update_project(this.state.id,this.state.name, this.state.resp_link, this.state.users);
         event.preventDefault();
 
 
@@ -57,6 +60,9 @@ class ProjectForm extends React.Component {
         return (
             <form onSubmit={(event) => this.handleSubmit(event)}>
                 <div className="form-group">
+
+                    <h3>{this.state.id}</h3>
+
                     <label htmlFor="name"></label>
                     <input type="text" className="form-control" name="name"
                            value={this.state.name} onChange={(event) => this.handleChange(event)}/>
@@ -76,4 +82,4 @@ class ProjectForm extends React.Component {
     }
 }
 
-export default ProjectForm
+export default ProjectUpdateForm
