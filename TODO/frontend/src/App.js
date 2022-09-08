@@ -12,6 +12,8 @@ import User from "./components/User.js";
 import project from "./components/Project.js";
 import ProjectForm from "./components/ProjectForm";
 import ProjectUpdateForm from "./components/ProjectUpdateForm";
+import ProjectSearch from "./components/ProjectSearch";
+import ItemsList from "./components/ProjectSearch";
 
 const NotFound404 = () => {
     return (
@@ -48,12 +50,18 @@ class App extends React.Component {
             })
         })
     }
+    get_project_id() {
+        const path = window.location.pathname
+        const projId = parseInt(path.match(/\d+/))
+        console.log(projId)
+        return projId
+    }
 
     update_project(id, name, resp_link, users) {
         const headers = this.get_headers()
-        const data = {id, name: name, resp_link:resp_link ,users: users}
+        const data = {name: name, resp_link:resp_link ,users: users}
         console.log(data)
-        axios.put(`http://127.0.0.1:8000/api/projects/${id}`, data, {headers})
+        axios.put(`http://127.0.0.1:8000/api/projects/${this.get_project_id()}/`, data, {headers})
             .then(response => {
                 this.load_data()
             }).catch(error => {
@@ -234,6 +242,7 @@ class App extends React.Component {
                                                                                     resp_link, users)}/>}/>
                         <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles}/>}/>
                         <Route path="/projects/:name" element={<ProjectListDetail projects={this.state.projects}/>}/>
+                        <Route path="/projects/search" element={<ItemsList projects={this.state.projects}/>}/>
                         <Route path="/users" element={<Navigate to="/"/>}/>
                         <Route path="*" element={<NotFound404/>}/>
                     </Routes>

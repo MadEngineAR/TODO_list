@@ -56,6 +56,9 @@ const ProjectList = ({projects, delete_project, update_project}) => {
                 <button>
                     <Link to={'/projects/create'}>Create_project</Link>
                 </button>
+                <button>
+                    <Link to={'/projects/search'}>Search_project</Link>
+                </button>
             </tr>
         </table>
     )

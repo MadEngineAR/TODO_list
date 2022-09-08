@@ -3,9 +3,6 @@ import project from "./Project";
 import {useParams} from "react-router-dom";
 
 
-
-
-
 class ProjectUpdateForm extends React.Component {
     constructor(props) {
         super(props);
@@ -58,7 +55,8 @@ class ProjectUpdateForm extends React.Component {
 
     handleSubmit(event) {
         console.log(project.id);
-        this.props.update_project(this.state.id,this.state.name, this.state.resp_link, this.state.users);
+        // this.props.update_project(this.state.id,this.state.name, this.state.resp_link, this.state.users);
+          this.props.update_project(this.state.id,this.state.name, this.state.resp_link, this.state.users);
         event.preventDefault();
 
 
