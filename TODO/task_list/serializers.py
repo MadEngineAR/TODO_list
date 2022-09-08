@@ -15,4 +15,4 @@ class TodoArticleHyperlinkedModelSerializer(serializers.HyperlinkedModelSerializ
 
     class Meta:
         model = TodoArticle
-        fields = '__all__'
+        fields = ('id', 'project', 'text', 'created_at', 'updated_at', 'user', 'is_active')

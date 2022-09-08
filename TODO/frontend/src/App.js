@@ -85,6 +85,19 @@ class App extends React.Component {
         )
     }
 
+    delete_todo(id) {
+        console.log(id)
+        const headers = this.get_headers()
+        axios.delete(`http://127.0.0.1:8000/api/todo/${id}`, {headers})
+            .then(response => {
+                this.load_data()
+            }).catch(error => {
+                console.log(error)
+                this.setState({todoArticles: []})
+            }
+        )
+    }
+
     set_token(token, username) {
         const cookies = new Cookies()
         cookies.set('token', token)
@@ -240,7 +253,9 @@ class App extends React.Component {
                                                                            update_project={(id, name, resp_link, users) =>
                                                                                 this.update_project(id,name,
                                                                                     resp_link, users)}/>}/>
-                        <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles}/>}/>
+                        <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles}
+                                                                     delete_todo={(id) =>
+                                                                                this.delete_todo(id)} />}/>
                         <Route path="/projects/:name" element={<ProjectListDetail projects={this.state.projects}/>}/>
                         <Route path="/projects/search" element={<ItemsList projects={this.state.projects}/>}/>
                         <Route path="/users" element={<Navigate to="/"/>}/>
