@@ -4,7 +4,7 @@ import UserList from './components/User.js'
 import ProjectList from './components/Project.js'
 import axios from 'axios'
 import TodoList from "./components/Todo";
-import {Route, BrowserRouter, Link, Routes, Navigate,} from "react-router-dom";
+import {Route, BrowserRouter, Link, Routes, Navigate, useParams,} from "react-router-dom";
 import ProjectListDetail from "./components/ProjectDetail";
 import LoginForm from "./components/Auth";
 import Cookies from 'universal-cookie';
@@ -51,7 +51,7 @@ class App extends React.Component {
 
     update_project(id, name, resp_link, users) {
         const headers = this.get_headers()
-        const data = {name: name, resp_link:resp_link ,users: users}
+        const data = {id, name: name, resp_link:resp_link ,users: users}
         console.log(data)
         axios.put(`http://127.0.0.1:8000/api/projects/${id}`, data, {headers})
             .then(response => {
@@ -222,13 +222,14 @@ class App extends React.Component {
                         <Route exact path='/' element={<UserList users={this.state.users}/>}/>
                         <Route exact path='/projects' element={<ProjectList projects={this.state.projects}
                                                                             delete_project={(id) =>
-                                                                                this.delete_project(id)}/>}/>
+                                                                                this.delete_project(id)}
+                                                                                />}/>
                         <Route exact path='/projects/create' element={<ProjectForm users={this.state.users}
                                                                            create_project={(name, resp_link, users) =>
                                                                                 this.create_project(name,
                                                                                     resp_link, users)}/>}/>
                         <Route exact path='/projects/:id/update/' element={<ProjectUpdateForm users={this.state.users}
-                                                                           update_project={(id=project.id, name, resp_link, users) =>
+                                                                           update_project={(id, name, resp_link, users) =>
                                                                                 this.update_project(id,name,
                                                                                     resp_link, users)}/>}/>
                         <Route exact path='/todo' element={<TodoList todoArticles={this.state.todoArticles}/>}/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+
 const ProjectItem = ({project, delete_project, update_project}) => {
     return (
 
@@ -25,7 +26,7 @@ const ProjectItem = ({project, delete_project, update_project}) => {
                 <button onClick={() => delete_project(project.id)} type='button'>Delete</button>
             </td>
              <td>
-                <button>
+                <button onClick={() => update_project(project.id)}type='button'>
                      <Link to={`/projects/${project.id}/update/`}>Update_project</Link>
                 </button>
             </td>
